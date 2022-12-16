@@ -3,6 +3,7 @@ import userController from "../Controllers/userController.js";
 import bkUserController from "../Controllers/bkUserController.js";
 import condidateController from "../Controllers/condidateController.js";
 import CountryState from "../Controllers/CountryState.js";
+import TexteditorController from "../Controllers/TexteditorController.js";
 
 import UserRoleController from "../Controllers/UserRoleController.js";
 import auth from "../middleware/auth.js";
@@ -33,7 +34,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 const Router=express()
 
-
 Router.post('/register',upload.array("image",10),userController.registerUser);
 Router.post('/login',userController.loginUser);
 
@@ -46,6 +46,7 @@ Router.get('/get_role',UserRoleController.getRole)
 /*****************  get country  **************/
 
 Router.get('/get_country',CountryState.getCountry);
+
 
 
 
@@ -65,6 +66,17 @@ Router.get('/booking_getUser',bkUserController.getBokUser)
 
 /***************** condidate  **************/
 Router.post('/condidate',condidateController.createConditate)
+
+
+/***************** get user admin  **************/
+// Router.get('/admin/get_user',userController.getuser)
+
+
+Router.post('/texteditor_post',TexteditorController.texteditor)
+Router.get('/get_texteditor',TexteditorController.getTextEditor)
+
+
+
 
 
 

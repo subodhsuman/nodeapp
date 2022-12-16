@@ -29,12 +29,8 @@ const User = db.define("user", {
   f_2a:Sequelize.INTEGER,
   company_name:Sequelize.STRING,
   role_id:Sequelize.STRING,
+  role:Sequelize.STRING,
 
-  
-  
-  
- 
-  
 });
 await User.sync();
 

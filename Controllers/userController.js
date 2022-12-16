@@ -20,18 +20,18 @@ export default{
         let request=req.body;
 
         //  console.log(req?.files?.filename,"abcde");
-        if (req.files.length <= 0) {
-          return res.json(reply.failed(`You must select at least 1 file.`));
-        }
+        // if (req.files.length <= 0) {
+        //   return res.json(reply.failed(`You must select at least 1 file.`));
+        // }
 
-         let c = req?.files
+        //  let c = req?.files
           
-         let arr=[]
+        //  let arr=[]
          
-           c.forEach(function (value, i) {
-              arr.push(value.filename);
+        //    c.forEach(function (value, i) {
+        //       arr.push(value.filename);
               
-         });
+        //  });
         //  console.log("image data",arr)
 
         let rules = {
@@ -63,7 +63,7 @@ export default{
        
 
 
-          request.image=arr;
+          // request.image=arr;
           try {
             const user= await User.create(request);
              return res.json(reply.success("user create successfully",user))
@@ -388,11 +388,7 @@ export default{
             res.json(reply.success("user get successfully",{'result': users, 'perpage':limit, 'current_page':currentPage, 'pages': pages, 'previous_page':prviousPage,'next_page':nextPage, 'totaldata': data.count}));
           });
         })
-      
-          // const getEmail=await User.findAll({});
-          //  return res.json(reply.success("user fetch successfully",{data:getEmail}))
-
-          
+             
 
       }
       catch (error) {
@@ -401,10 +397,25 @@ export default{
           res.json(reply.failed("Internal Server Error"));
 
       } 
+
+
+  },
+
+     /*********************** get user admin side *******************/
+
+  getuser:async(req,res)=>{
+        //  var request=req.body;
+         try{
+            if(request.role=='admin'){
+              const getAllUser = await User.findAll({});
+              res.json(reply.success("admin get successfully",{data:getAllUser}))
+            }
+
+         }catch(err){
+             console.log(err)
+            res.json(reply.failed(err))
+         }
   }
-
-    
-
 
 
 }
