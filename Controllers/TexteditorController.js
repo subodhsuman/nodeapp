@@ -8,7 +8,7 @@ export default {
 
    fs.writeFile("textEditor.txt",request.content, function (err) {
       if (err) throw err;
-      console.log("File is created successfully.");
+      console.log("File is created successfully."); 
     });
 
     try {

@@ -122,9 +122,9 @@ export default{
 
 
               
-              /**********  OTP section*******************/
+              /**********  OTP section *******************/
               
-              let otp=Math.random()*1000000;
+              let otp = Math.random()*1000000;
 
           try{
             if(getEmail.f_2a==1){
